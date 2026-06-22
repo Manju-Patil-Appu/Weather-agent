@@ -28,4 +28,4 @@ report = generate_report(
 
 print(report)
 
-#send_email(report, weather)  
+send_email(report, weather)  
