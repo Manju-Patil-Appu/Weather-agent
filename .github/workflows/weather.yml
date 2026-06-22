@@ -1,32 +1,30 @@
 name: Weather Intelligence Agent
 
 on:
-schedule:
-- cron: '30 3 * * *'
-workflow_dispatch:
+  schedule:
+    - cron: '30 3 * * *'
+  workflow_dispatch:
 
 jobs:
-run-weather-agent:
-runs-on: ubuntu-latest
+  run-weather-agent:
+    runs-on: ubuntu-latest
 
-```
-steps:
-  - name: Checkout Repository
-    uses: actions/checkout@v4
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-  - name: Setup Python
-    uses: actions/setup-python@v5
-    with:
-      python-version: '3.12'
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-  - name: Install Dependencies
-    run: pip install -r requirements.txt
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
 
-  - name: Run Weather Agent
-    env:
-      EMAIL: ${{ secrets.EMAIL }}
-      PASSWORD: ${{ secrets.PASSWORD }}
-      API_KEY: ${{ secrets.API_KEY }}
-      CITY: ${{ secrets.CITY }}
-    run: python main.py
-```
+      - name: Run Weather Agent
+        env:
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          API_KEY: ${{ secrets.API_KEY }}
+          CITY: ${{ secrets.CITY }}
+        run: python main.py
